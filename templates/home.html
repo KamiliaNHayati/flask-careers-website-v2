@@ -10,34 +10,41 @@
             width: 100%;
             height: 360px;
             object-fit: cover;
-            margin: auto;
+            margin-bottom: 16px;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1 class="text-center mt-2 mb-4 ">Job Carrers</h1>
+        {% include 'nav.html' %}
         <img class="img-fluid" src="../static/banner.jpg" alt="HTML Dog">
-        <h2 class="text-center">About Us</h2>
-        <p class="lead">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-            Cras dolor purus, scelerisque id dictum sit amet, tempus interdum dui. 
-            Curabitur in eleifend ipsum, at rutrum nulla. 
-            Nulla facilisi. 
-            Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. 
-            Ut ullamcorper luctus orci, sed maximus augue blandit at. 
-            In gravida arcu sit amet nibh aliquet pulvinar. 
-            Vivamus aliquet nisi et risus ultricies, volutpat dictum turpis mattis. 
-            Nam pellentesque, ex et semper bibendum, nunc nisl ornare sem, eget congue lectus lacus vitae metus. 
-            Etiam commodo iaculis sodales. 
-            Nam vel elit dictum, faucibus magna eu, semper massa. 
-            Phasellus consectetur nunc et elit pretium lobortis. 
-            Pellentesque semper tempus pretium. 
-            Phasellus non eros in dolor imperdiet accumsan in ac velit. 
-            Nunc egestas venenatis rutrum. 
-            Nam pharetra lacinia augue, vel blandit tortor cursus sed.
-        </p>
-        <h2 class="text-center mt-2 mb-4">Open Positions</h2>
+        <h1 class="text-center mt-2 mb-4 ">{{company_name}} Carrers</h1>
+        <div class="row" style="margin-bottom: 16px;">
+            <div class="col-md-6">
+            <p class="lead">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+                Cras dolor purus, scelerisque id dictum sit amet, tempus interdum dui. 
+                Curabitur in eleifend ipsum, at rutrum nulla. 
+                Nulla facilisi. 
+                Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. 
+                Ut ullamcorper luctus orci, sed maximus augue blandit at. 
+                In gravida arcu sit amet nibh aliquet pulvinar. 
+                Vivamus aliquet nisi et risus ultricies, volutpat dictum turpis mattis. 
+                Nam pellentesque, ex et semper bibendum, nunc nisl ornare sem, eget congue lectus lacus vitae metus. 
+                Etiam commodo iaculis sodales. 
+                Nam vel elit dictum, faucibus magna eu, semper massa. 
+                Phasellus consectetur nunc et elit pretium lobortis. 
+                Pellentesque semper tempus pretium. 
+                Phasellus non eros in dolor imperdiet accumsan in ac velit. 
+                Nunc egestas venenatis rutrum. 
+                Nam pharetra lacinia augue, vel blandit tortor cursus sed.
+            </p>
+            </div>
+            <div class="d-none d-md-block col-md-6">
+                <img src="../static/working.jpg" style="height: 420px; margin-right: 24px; margin-bottom: 16px; border-radius: 4px;">
+            </div>
+        </div>
+        <h2 class="text-center mt-2 mb-4">Job Openings</h2>
         <!-- Flask feature for dynamic data -->
         <div>
             {% for job in jobs %}
@@ -45,9 +52,10 @@
             {% endfor %}
         </div>
             <div class="text-center">
-                <button class="btn btn-primary btn-lg">Contact Us</button>
+                <a href="mailto:Carreerly@carr.co.id" type="button" class="btn btn-primary btn-lg">Contact Us</a>
                 <p class="mt-4">Copyright © Job Carrers 2026 </p>
             </div>
     </div>
+    {% include 'footer.html' %}
 </body>
 </html>
