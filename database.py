@@ -23,3 +23,21 @@ def get_engine():
         return None
 
 engine = get_engine()
+
+def load_jobs_from_db():
+    if engine is None:
+        return JOBS
+    with engine.connect() as conn:
+        result = conn.execute(text("select * from jobs"))
+        return [dict(row._mapping) for row in result.all()]
+
+
+def load_job_from_db(id):
+    if engine:
+        with engine.connect() as conn:
+            result = conn.execute(text("SELECT * FROM jobs WHERE id = :id"), {"id": id})
+            row = result.fetchone()
+            if row is None:
+                return None
+            return dict(row._mapping)
+    return None

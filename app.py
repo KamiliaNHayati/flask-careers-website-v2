@@ -1,5 +1,5 @@
 from flask import Flask, render_template, jsonify
-from database import engine
+from database import load_jobs_from_db, load_job_from_db
 from sqlalchemy import text
 
 app = Flask(__name__)
@@ -10,21 +10,21 @@ JOBS = [
     {'id': 3, 'title': 'Data Engineer', 'location': 'Remote', 'salary': '$100,000'}
 ]
 
-def load_jobs_from_db():
-    if engine is None:
-        return JOBS
-    with engine.connect() as conn:
-        result = conn.execute(text("select * from jobs"))
-        return [dict(row._mapping) for row in result.all()]
-
 @app.route('/')
 def index():
     jobs = load_jobs_from_db()
     return render_template('home.html', jobs=jobs, company_name="Carreerly")
 
-@app.route('/jobs')
+@app.route('/api/jobs')
 def list_jobs():
     return jsonify(load_jobs_from_db())
-    
+
+@app.route('/job/<id>')
+def show_job(id):
+    job = load_job_from_db(id)
+    if not job:
+        return "Job not found", 404
+    return render_template('jobpage.html', job=job, company_name="Carreerly")
+
 if __name__ == "__main__":
     app.run(debug=True)
