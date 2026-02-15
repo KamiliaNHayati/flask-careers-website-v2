@@ -4,12 +4,6 @@ from sqlalchemy import text
 
 app = Flask(__name__)
 
-JOBS = [
-    {'id': 1, 'title': 'Data Analyst', 'location': 'Remote', 'salary': '$80,000'},
-    {'id': 2, 'title': 'Data Scientist', 'location': 'Remote', 'salary': '$90,000'},
-    {'id': 3, 'title': 'Data Engineer', 'location': 'Remote', 'salary': '$100,000'}
-]
-
 @app.route('/')
 def index():
     jobs = load_jobs_from_db()

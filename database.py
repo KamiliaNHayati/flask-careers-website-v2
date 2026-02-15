@@ -24,6 +24,12 @@ def get_engine():
 
 engine = get_engine()
 
+JOBS = [
+    {'id': 1, 'title': 'Data Analyst', 'location': 'Remote', 'salary': '$80,000'},
+    {'id': 2, 'title': 'Data Scientist', 'location': 'Remote', 'salary': '$90,000'},
+    {'id': 3, 'title': 'Data Engineer', 'location': 'Remote', 'salary': '$100,000'}
+]
+
 def load_jobs_from_db():
     if engine is None:
         return JOBS
@@ -40,6 +46,10 @@ def load_job_from_db(id):
             if row is None:
                 return None
             return dict(row._mapping)
+    # Fallback to static JOBS list
+    for job in JOBS:
+        if str(job['id']) == str(id):
+            return job
     return None
 
 def add_application_to_db(job_id, application):
