@@ -25,9 +25,15 @@ def get_engine():
 engine = get_engine()
 
 JOBS = [
-    {'id': 1, 'title': 'Data Analyst', 'location': 'Remote', 'salary': '$80,000'},
-    {'id': 2, 'title': 'Data Scientist', 'location': 'Remote', 'salary': '$90,000'},
-    {'id': 3, 'title': 'Data Engineer', 'location': 'Remote', 'salary': '$100,000'}
+    {'id': 1, 'title': 'Data Analyst', 'location': 'Remote', 'salary': '$80,000',
+     'currency': '$', 'responsibilities': 'Analyze data sets. Create reports and dashboards. Present insights to stakeholders.',
+     'requirements': 'Proficiency in SQL and Excel. Experience with data visualization tools. Strong analytical skills.'},
+    {'id': 2, 'title': 'Data Scientist', 'location': 'Remote', 'salary': '$90,000',
+     'currency': '$', 'responsibilities': 'Build and deploy machine learning models. Design experiments and analyze results. Work with engineering teams to integrate models into production systems.',
+     'requirements': 'Strong background in statistics and machine learning. Experience with Python, scikit-learn, and TensorFlow. MS or PhD in a quantitative field preferred.'},
+    {'id': 3, 'title': 'Data Engineer', 'location': 'Remote', 'salary': '$100,000',
+     'currency': '$', 'responsibilities': 'Design and build data pipelines. Maintain data warehouse infrastructure. Optimize data delivery and performance.',
+     'requirements': 'Experience with ETL tools and frameworks. Proficiency in SQL and Python. Knowledge of cloud platforms like AWS or GCP.'}
 ]
 
 def load_jobs_from_db():
